@@ -2,7 +2,6 @@ var path = require('path');
 
 var SPEC_DIR = path.resolve(__dirname, 'spec');
 var testConfiguration = {
-    watch: true,
     output: {
         filename: 'spec.js'
     },

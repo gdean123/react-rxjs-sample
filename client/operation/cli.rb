@@ -1,3 +1,6 @@
+require 'thor'
+require_relative './test'
+
 class Cli < Thor
   desc 'watch', 'Continuously transcompile the source'
   def watch
@@ -9,8 +12,6 @@ class Cli < Thor
     system './node_modules/.bin/webpack -p'
   end
 
-  desc 'test', 'Run the jasmine tests on localhost:8888'
-  def test
-    system './node_modules/gulp/bin/gulp.js test'
-  end
+  desc 'test', 'Run the jasmine tests'
+  subcommand 'test', Test
 end

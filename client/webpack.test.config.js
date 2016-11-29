@@ -14,7 +14,8 @@ var testConfiguration = {
                 loader: 'babel'
             }
         ]
-    }
+    },
+    plugins: []
 };
 
 module.exports = testConfiguration;

@@ -6,17 +6,17 @@ class Counter extends React.Component {
     constructor(props) {
         super(props);
 
-        this.incrementStream = new Rx.BehaviorSubject();
-        this.decrementStream = new Rx.BehaviorSubject();
+        this.didClickIncrementStream = new Rx.Subject();
+        this.didClickDecrementStream = new Rx.Subject();
 
         this.state = {total: 0};
     }
 
     componentDidMount() {
-        this.incrementStream.next(1);
-        this.decrementStream.next(-1);
+        const incrementStream = this.didClickIncrementStream.mapTo(1);
+        const decrementStream = this.didClickDecrementStream.mapTo(-1);
 
-        this.subscription = Rx.Observable.merge(this.incrementStream, this.decrementStream)
+        this.subscription = Rx.Observable.merge(incrementStream, decrementStream)
             .scan((accumulator, currentValue) => accumulator + currentValue, 0)
             .subscribe(total => {
                 this.setState({total})
@@ -28,13 +28,11 @@ class Counter extends React.Component {
     }
 
     render() {
-        const {total} = this.state;
-
         return (
             <div>
-                <button onClick={() => this.incrementStream.next(1) }>Increment</button>
-                <button onClick={() => this.decrementStream.next(-1) }>Decrement</button>
-                <p>{total}</p>
+                <button onClick={() => this.didClickIncrementStream.next()}>Increment</button>
+                <button onClick={() => this.didClickDecrementStream.next()}>Decrement</button>
+                <p>{this.state.total}</p>
             </div>
         )
     }

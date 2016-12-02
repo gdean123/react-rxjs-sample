@@ -6,7 +6,7 @@ import {didClickIncrementStream, didClickDecrementStream} from '../../sources/in
 export default class Counter extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {total: 0};
+        this.state = {total: 1};
     }
 
     componentDidMount() {

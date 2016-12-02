@@ -10,7 +10,7 @@ function specPipe(plugin, watch) {
           plugins: testConfiguration.plugins.concat([plugin])
     });
 
-    return gulp.src(['spec/**/*_spec.js'])
+    return gulp.src(['spec/configuration/spec_helper.js', 'spec/**/*_spec.js'])
       .pipe(webpack(testConfigurationWithTestPlugins));
 }
 

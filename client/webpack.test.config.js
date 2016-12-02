@@ -1,6 +1,8 @@
 var path = require('path');
 
+var APP_DIR = path.resolve(__dirname, 'src/app');
 var SPEC_DIR = path.resolve(__dirname, 'spec');
+
 var testConfiguration = {
     output: {
         filename: 'spec.js'
@@ -9,12 +11,18 @@ var testConfiguration = {
         loaders: [
             {
                 test: /\.jsx?/,
-                include: SPEC_DIR,
+                include: [APP_DIR, SPEC_DIR],
                 loader: 'babel'
             }
         ]
     },
-    plugins: []
+    plugins: [],
+    externals: {
+        'cheerio': 'window',
+        'react/addons': true,
+        'react/lib/ExecutionEnvironment': true,
+        'react/lib/ReactContext': true
+    }
 };
 
 module.exports = testConfiguration;

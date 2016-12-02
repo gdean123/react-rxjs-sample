@@ -29,8 +29,12 @@
     "whatwg-fetch": "^2.0.1"
   },
   "devDependencies": {
+    "enzyme": "^2.6.0",
     "gulp": "^3.9.1",
     "gulp-jasmine-browser": "^1.7.1",
+    "jasmine-enzyme": "^2.0.0",
+    "react-addons-test-utils": "^15.4.1",
+    "react-dom": "^15.4.1",
     "webpack-stream": "^3.2.0"
   }
 }

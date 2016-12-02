@@ -1,0 +1,1 @@
+import fetchPokemonNameSink from './fetch_pokemon_name_sink'

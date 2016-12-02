@@ -7,6 +7,7 @@ var config = {
     entry: [
         APP_DIR + '/polyfills/promise.js',
         'whatwg-fetch',
+        APP_DIR + '/sinks/network/index.js',
         APP_DIR + '/index.js'
     ],
     output: {

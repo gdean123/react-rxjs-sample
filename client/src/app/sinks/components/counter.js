@@ -1,7 +1,7 @@
 import React from 'react';
 
-import {totalStream} from '../streams/total_stream'
-import {didClickIncrementStream, didClickDecrementStream} from '../streams/intents'
+import {totalStream} from '../../streams/total_stream'
+import {didClickIncrementStream, didClickDecrementStream} from '../../sources/intents'
 
 export default class Counter extends React.Component {
     constructor(props) {

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import pokemonName from '../streams/pokemon_name';
+import {didReceivePokemonName} from '../../sources/network';
 
 export default class Label extends React.Component {
     constructor(props) {
@@ -9,12 +9,7 @@ export default class Label extends React.Component {
     }
 
     componentDidMount() {
-        this.subscription = pokemonName.subscribe(
-            name => {
-                this.setState({name})
-            },
-            err => console.error(err)
-        );
+        this.subscription = didReceivePokemonName.subscribe(name => this.setState({name}));
     }
 
     componentWillUnmount() {

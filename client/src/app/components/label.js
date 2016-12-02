@@ -1,15 +1,20 @@
 import React from 'react';
 
-import {totalStream} from '../streams/total_stream'
+import pokemonName from '../streams/pokemon_name';
 
 export default class Label extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {total: 0}
+        this.state = {name: ''}
     }
 
     componentDidMount() {
-        this.subscription = totalStream.subscribe(total => this.setState({total}));
+        this.subscription = pokemonName.subscribe(
+            name => {
+                this.setState({name})
+            },
+            err => console.error(err)
+        );
     }
 
     componentWillUnmount() {
@@ -18,7 +23,7 @@ export default class Label extends React.Component {
 
     render() {
         return (
-            <p>Total: {this.state.total}</p>
+            <p>Name: {this.state.name}</p>
         )
     }
 }

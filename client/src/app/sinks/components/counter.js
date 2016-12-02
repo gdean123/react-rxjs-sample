@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {totalStream} from '../../streams/total_stream'
-import {didClickIncrementStream, didClickDecrementStream} from '../../sources/intents'
+import {incrementStream, decrementStream} from '../../sources/intents'
 
 export default class Counter extends React.Component {
     constructor(props) {
@@ -20,8 +20,8 @@ export default class Counter extends React.Component {
     render() {
         return (
             <div>
-                <button onClick={() => didClickIncrementStream.next()}>Increment</button>
-                <button onClick={() => didClickDecrementStream.next()}>Decrement</button>
+                <button onClick={() => incrementStream.next()}>Increment</button>
+                <button onClick={() => decrementStream.next()}>Decrement</button>
                 <p>{this.state.total}</p>
             </div>
         )

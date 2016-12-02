@@ -1,4 +1,4 @@
 import Rx from 'rxjs'
 
-export const didClickIncrementStream = new Rx.Subject();
-export const didClickDecrementStream = new Rx.Subject();
+export const incrementStream = new Rx.Subject();
+export const decrementStream = new Rx.Subject();

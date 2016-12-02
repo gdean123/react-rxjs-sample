@@ -1,7 +1,7 @@
 import Rx from 'rxjs'
-import {didClickIncrementStream, didClickDecrementStream} from '../sources/intents'
+import {incrementStream, decrementStream} from '../sources/intents'
 
-export const totalStream = Rx.Observable.merge(didClickIncrementStream.mapTo(1), didClickDecrementStream.mapTo(-1))
+export const totalStream = Rx.Observable.merge(incrementStream.mapTo(1), decrementStream.mapTo(-1))
     .scan((accumulator, currentValue) => {
         const newTotal = accumulator + currentValue;
         if (newTotal < 1) {

@@ -1,2 +1,4 @@
 client/node_modules
 client/distribution
+server/.gradle
+server/build

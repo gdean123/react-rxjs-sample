@@ -1,0 +1,2 @@
+server: ./server/operation/bin/server launch
+client: ./client/operation/bin/client watch

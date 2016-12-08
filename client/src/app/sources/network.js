@@ -1,3 +1,3 @@
 import Rx from 'rxjs'
 
-export const didReceivePokemonName = new Rx.Subject();
+export const didReceivePet = new Rx.Subject();

@@ -1,1 +1,1 @@
-import fetchPokemonNameSink from './fetch_pokemon_name_sink'
+import fetchPetSink from './fetch_pet_sink'

@@ -1,4 +1,4 @@
 import Rx from 'rxjs'
 
-export const incrementStream = new Rx.Subject();
-export const decrementStream = new Rx.Subject();
+export const nextStream = new Rx.Subject();
+export const previousStream = new Rx.Subject();

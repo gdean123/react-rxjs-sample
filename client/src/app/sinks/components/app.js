@@ -1,12 +1,12 @@
 import React from 'react';
 
-import Counter from './counter'
-import Label from './label'
+import PetSelector from './pet_selector'
+import SelectedPet from './selected_pet'
 
 const App = () => (
     <div>
-        <Counter/>
-        <Label/>
+        <PetSelector/>
+        <SelectedPet/>
     </div>
 );
 

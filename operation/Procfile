@@ -1,2 +1,2 @@
 server: ./server/operation/bin/server launch
-client: ./client/operation/bin/client watch
+client: ./client/operation/bin/client watch --output-path ./server/src/main/resources/static

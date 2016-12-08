@@ -1,6 +1,6 @@
 var path = require('path');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
-var BUILD_DIR = path.resolve(__dirname, 'distribution');
 var APP_DIR = path.resolve(__dirname, 'src/app');
 
 var config = {
@@ -10,10 +10,6 @@ var config = {
         APP_DIR + '/sinks/network/index.js',
         APP_DIR + '/index.js'
     ],
-    output: {
-        path: BUILD_DIR,
-        filename: 'bundle.js'
-    },
     module: {
         loaders: [
             {
@@ -22,7 +18,10 @@ var config = {
                 loader: 'babel'
             }
         ]
-    }
+    },
+    plugins: [new HtmlWebpackPlugin({
+        template: APP_DIR + '/../index.html'
+    })]
 };
 
 module.exports = config;

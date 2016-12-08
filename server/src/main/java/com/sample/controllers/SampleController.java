@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class SampleController {
-    @RequestMapping("/")
+    @RequestMapping("/hello")
     @ResponseBody
     String home() {
         return "This is dynamic content.";

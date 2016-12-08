@@ -40,5 +40,7 @@ test {
 }
 
 war {
-    destinationDir = file(project.property('warOutputDirectory'))
+    if (project.hasProperty('warOutputDirectory')) {
+        destinationDir = file(project.property('warOutputDirectory'))
+    }
 }

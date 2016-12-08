@@ -28,8 +28,7 @@ repositories {
 dependencies {
     compile 'org.springframework.boot:spring-boot-starter-web:1.4.2.RELEASE'
     compile 'org.springframework.boot:spring-boot-starter-test:1.4.2.RELEASE'
-
-    testCompile 'org.assertj:assertj-core:3.6.1'
+    compile 'javax.inject:javax.inject:1'
 }
 
 test {

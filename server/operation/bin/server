@@ -5,5 +5,4 @@ $thor_runner = false
 require 'thor'
 require_relative '../cli.rb'
 
-puts 'hello'
 Cli.start(ARGV)

@@ -1,4 +1,6 @@
 client/node_modules
-client/distribution
+client/build
 server/.gradle
 server/build
+server/src/main/resources/
+build

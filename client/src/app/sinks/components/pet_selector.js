@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class PetSelector extends React.Component {
+export class PetSelectorFactory extends React.Component {
     constructor(props) {
         super(props);
         this.state = {currentValue: 1};

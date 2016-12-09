@@ -2,7 +2,6 @@ import React from 'react';
 import Rx from 'rxjs'
 
 import renderPetSelector from '../components/pet_selector';
-import PetSelector from '../../src/app/sinks/components/pet_selector';
 import {FetchPetSink} from '../../src/app/sinks/network/fetch_pet_sink';
 import {createSelectedPetIndexStream} from '../../src/app/streams/selected_pet_index_stream';
 import {PetRepository} from '../../src/app/repositories/pet_repository';
@@ -18,7 +17,7 @@ describe('clicking next', () => {
         const selectedPetIndexStream = createSelectedPetIndexStream(nextStream, previousStream);
         fetchPetSinkSubscription = FetchPetSink.start(selectedPetIndexStream);
 
-        petSelector = renderPetSelector(<PetSelector nextStream={nextStream} previousStream={previousStream} selectedPetIndexStream={selectedPetIndexStream}/>);
+        petSelector = renderPetSelector({nextStream, previousStream, selectedPetIndexStream});
     });
 
     afterEach(() => {

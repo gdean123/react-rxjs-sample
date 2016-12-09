@@ -1,23 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import {AppFactory} from './sinks/components/app';
-import {createDidReceivePet} from './sources/network';
+import {createDidReceivePetStream} from './sources/network';
 import {createNextStream, createPreviousStream} from './sources/intents'
 import {createSelectedPetIndexStream} from './streams/selected_pet_index_stream';
+
+import {PetSelector} from './sinks/components/pet_selector'
+import {SelectedPet} from './sinks/components/selected_pet'
+import {App} from './sinks/components/app';
+
 import {FetchPetSink} from './sinks/network/fetch_pet_sink'
-import {PetSelectorFactory} from './sinks/components/pet_selector'
-import {SelectedPetFactory} from './sinks/components/selected_pet'
 
 const nextStream = createNextStream();
 const previousStream = createPreviousStream();
-const didReceivePet = createDidReceivePet();
+const didReceivePetStream = createDidReceivePetStream();
 const selectedPetIndexStream = createSelectedPetIndexStream(nextStream, previousStream);
 
-const PetSelector = React.createElement(PetSelectorFactory, {nextStream, previousStream, selectedPetIndexStream});
-const SelectedPet = React.createElement(SelectedPetFactory, {didReceivePet});
-const App = React.createElement(AppFactory, {PetSelector, SelectedPet});
+const petSelector = React.createElement(PetSelector, {nextStream, previousStream, selectedPetIndexStream});
+const selectedPet = React.createElement(SelectedPet, {didReceivePetStream});
+const app = React.createElement(App, {petSelector, selectedPet});
 
-ReactDOM.render(App, document.getElementById('app'));
+const fetchPetSink = new FetchPetSink({selectedPetIndexStream, didReceivePetStream});
 
-FetchPetSink.start(selectedPetIndexStream, didReceivePet);
+ReactDOM.render(app, document.getElementById('app'));
+
+fetchPetSink.start();

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export class SelectedPetFactory extends React.Component {
+export class SelectedPet extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -10,7 +10,7 @@ export class SelectedPetFactory extends React.Component {
     }
 
     componentDidMount() {
-        this.subscription = this.props.didReceivePet.subscribe(pet => this.setState(pet));
+        this.subscription = this.props.didReceivePetStream.subscribe(pet => this.setState(pet));
     }
 
     componentWillUnmount() {

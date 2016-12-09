@@ -1,10 +1,10 @@
 import React from 'react';
 
-export const AppFactory = ({PetSelector, SelectedPet}) => {
+export const App = ({petSelector, selectedPet}) => {
     return (
         <div>
-            {PetSelector}
-            {SelectedPet}
+            {petSelector}
+            {selectedPet}
         </div>
     )
 };

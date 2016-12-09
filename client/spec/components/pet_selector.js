@@ -1,11 +1,11 @@
 import React from 'react';
 import {mount} from 'enzyme';
 
-import {PetSelectorFactory} from '../../src/app/sinks/components/pet_selector';
+import {PetSelector} from '../../src/app/sinks/components/pet_selector';
 
 const renderPetSelector = ({nextStream, previousStream, selectedPetIndexStream}) => {
-    const PetSelector = <PetSelectorFactory nextStream={nextStream} previousStream={previousStream} selectedPetIndexStream={selectedPetIndexStream}/>;
-    const wrapper = mount(PetSelector);
+    const petSelector = React.createElement(PetSelector, {nextStream, previousStream, selectedPetIndexStream});
+    const wrapper = mount(petSelector);
 
     const nextButton = wrapper.findWhere(element => element.text() === 'Next');
     const previousButton = wrapper.findWhere(element => element.text() === 'Previous');

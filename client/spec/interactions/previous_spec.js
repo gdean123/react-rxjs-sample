@@ -14,8 +14,11 @@ describe('clicking previous', () => {
 
         const nextStream = new Rx.Subject();
         const previousStream = new Rx.Subject();
+        const didReceivePetStream = new Rx.Subject();
         const selectedPetIndexStream = createSelectedPetIndexStream(nextStream, previousStream);
-        fetchPetSinkSubscription = FetchPetSink.start(selectedPetIndexStream);
+        const fetchPetSink = new FetchPetSink({selectedPetIndexStream, didReceivePetStream});
+
+        fetchPetSinkSubscription = fetchPetSink.start();
 
         petSelector = renderPetSelector({nextStream, previousStream, selectedPetIndexStream});
     });

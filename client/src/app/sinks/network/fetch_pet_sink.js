@@ -7,10 +7,14 @@ export class FetchPetSink {
     }
 
     start() {
-        return this.selectedPetIndexStream.subscribe(selectedPetIndex => {
+        this.subscription = this.selectedPetIndexStream.subscribe(selectedPetIndex => {
             PetRepository.get(selectedPetIndex).subscribe(pet => {
                 this.didReceivePetStream.next(pet);
             })
         })
+    }
+
+    stop() {
+        this.subscription.unsubscribe();
     }
 }

@@ -20,12 +20,12 @@ describe('clicking next', () => {
     });
 
     it('fetches the name of the pet with the associated id', () => {
-        const fetchPetSinkSubscription = application.sinks.fetchPet.start();
+        application.sinks.fetchPet.start();
 
         spyOn(PetRepository, 'get').and.returnValue(Rx.Observable.never());
         petSelector.next();
         expect(PetRepository.get).toHaveBeenCalledWith(2);
 
-        fetchPetSinkSubscription.unsubscribe()
+        application.sinks.fetchPet.stop();
     })
 });

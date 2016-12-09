@@ -21,7 +21,7 @@ describe('clicking next', () => {
         expect(petSelector.label()).toEqual('2');
     });
 
-    it('fetches the name of the pet with the associated id', () => {
+    it('fetches the pet with the associated id', () => {
         application.sinks.fetchPet.start();
 
         spyOn(PetRepository, 'get').and.returnValue(Rx.Observable.never());

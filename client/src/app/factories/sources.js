@@ -1,5 +1,5 @@
-import {createDidReceivePetStream} from '../sources/network';
 import {createNextStream, createPreviousStream} from '../sources/intents'
+import {createDidReceivePetStream} from '../sources/network';
 
 export const createSources = () => {
     const next = createNextStream();

@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 import {createApplication} from '../../src/app/factories/application'
 import {renderPetSelector} from "../components/pet_selector";

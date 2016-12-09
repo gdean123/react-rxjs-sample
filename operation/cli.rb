@@ -9,8 +9,9 @@ class Cli < Thor
     System.execute './server/operation/bin/server build --output-path ./build'
   end
 
-  desc 'launch', 'Run the server and watch Javascript changes'
+  desc 'launch', 'Build the Javascript and then run the server'
   def launch
-    System.execute "foreman start --procfile=./operation/Procfile --root=#{SampleDirectory.path}"
+    System.execute './client/operation/bin/client build --output-path ./server/src/main/resources/static'
+    System.execute './server/operation/bin/server launch'
   end
 end

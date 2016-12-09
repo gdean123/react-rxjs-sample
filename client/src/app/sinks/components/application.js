@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const App = ({petSelector, selectedPet}) => {
+export const Application = ({petSelector, selectedPet}) => {
     return (
         <div>
             {petSelector}

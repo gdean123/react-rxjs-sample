@@ -1,10 +1,7 @@
 import React from 'react';
 import {mount} from 'enzyme';
 
-import {PetSelector} from '../../src/app/sinks/components/pet_selector';
-
-const renderPetSelector = ({nextStream, previousStream, selectedPetIndexStream}) => {
-    const petSelector = React.createElement(PetSelector, {nextStream, previousStream, selectedPetIndexStream});
+const renderPetSelector = (petSelector) => {
     const wrapper = mount(petSelector);
 
     const nextButton = wrapper.findWhere(element => element.text() === 'Next');

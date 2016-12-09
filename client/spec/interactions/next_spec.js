@@ -2,29 +2,15 @@ import React from 'react';
 import Rx from 'rxjs'
 
 import renderPetSelector from '../components/pet_selector';
-import {FetchPetSink} from '../../src/app/sinks/network/fetch_pet_sink';
-import {createSelectedPetIndexStream} from '../../src/app/streams/selected_pet_index_stream';
 import {PetRepository} from '../../src/app/repositories/pet_repository';
+import {createApplication} from '../../src/app/factories/application'
 
 describe('clicking next', () => {
-    let petSelector, fetchPetSinkSubscription;
+    let application, petSelector;
 
     beforeEach(() => {
-        spyOn(PetRepository, 'get').and.returnValue(Rx.Observable.never());
-
-        const nextStream = new Rx.Subject();
-        const previousStream = new Rx.Subject();
-        const didReceivePetStream = new Rx.Subject();
-        const selectedPetIndexStream = createSelectedPetIndexStream(nextStream, previousStream);
-        const fetchPetSink = new FetchPetSink({selectedPetIndexStream, didReceivePetStream});
-
-        fetchPetSinkSubscription = fetchPetSink.start();
-
-        petSelector = renderPetSelector({nextStream, previousStream, selectedPetIndexStream});
-    });
-
-    afterEach(() => {
-        fetchPetSinkSubscription.unsubscribe()
+        application = createApplication();
+        petSelector = renderPetSelector(application.components.petSelector);
     });
 
     it('adds one to the pet selector label', () => {
@@ -34,7 +20,12 @@ describe('clicking next', () => {
     });
 
     it('fetches the name of the pet with the associated id', () => {
+        const fetchPetSinkSubscription = application.sinks.fetchPet.start();
+
+        spyOn(PetRepository, 'get').and.returnValue(Rx.Observable.never());
         petSelector.next();
         expect(PetRepository.get).toHaveBeenCalledWith(2);
+
+        fetchPetSinkSubscription.unsubscribe()
     })
 });

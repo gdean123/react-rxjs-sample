@@ -1,7 +1,7 @@
 import React from 'react';
 import {mount} from 'enzyme';
 
-const renderPetSelector = (petSelector) => {
+export const renderPetSelector = (petSelector) => {
     const wrapper = mount(petSelector);
 
     const nextButton = wrapper.findWhere(element => element.text() === 'Next');
@@ -14,5 +14,3 @@ const renderPetSelector = (petSelector) => {
         label: () => label.text()
     }
 };
-
-export default renderPetSelector;

@@ -1,16 +1,18 @@
 import React from 'react';
 import Rx from 'rxjs'
 
-import renderPetSelector from '../components/pet_selector';
-import {PetRepository} from '../../src/app/repositories/pet_repository';
 import {createApplication} from '../../src/app/factories/application'
+import {PetRepository} from '../../src/app/repositories/pet_repository';
+import {renderPetSelector} from '../components/pet_selector';
+import {renderSelectedPet} from '../components/selected_pet';
 
 describe('clicking next', () => {
-    let application, petSelector;
+    let application, petSelector, selectedPet;
 
     beforeEach(() => {
         application = createApplication();
         petSelector = renderPetSelector(application.components.petSelector);
+        selectedPet = renderSelectedPet(application.components.selectedPet);
     });
 
     it('adds one to the pet selector label', () => {
@@ -27,5 +29,12 @@ describe('clicking next', () => {
         expect(PetRepository.get).toHaveBeenCalledWith(2);
 
         application.sinks.fetchPet.stop();
+    });
+
+    it('renders the pet name and disposition when the request succeeds', () => {
+        application.sources.didReceivePet.next({name: 'Pillowfight', disposition: 'Sleepy'});
+
+        expect(selectedPet.nameLabel()).toEqual('Name: Pillowfight');
+        expect(selectedPet.dispositionLabel()).toEqual('Disposition: Sleepy');
     })
 });

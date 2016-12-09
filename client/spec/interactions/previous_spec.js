@@ -1,6 +1,7 @@
 import React from "react";
-import renderPetSelector from "../components/pet_selector";
+
 import {createApplication} from '../../src/app/factories/application'
+import {renderPetSelector} from "../components/pet_selector";
 
 describe('clicking previous', () => {
     let application, petSelector;

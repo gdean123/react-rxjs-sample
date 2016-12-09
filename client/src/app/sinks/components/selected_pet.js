@@ -1,7 +1,5 @@
 import React from 'react';
 
-import {didReceivePet} from '../../sources/network';
-
 export default class SelectedPet extends React.Component {
     constructor(props) {
         super(props);
@@ -12,7 +10,7 @@ export default class SelectedPet extends React.Component {
     }
 
     componentDidMount() {
-        this.subscription = didReceivePet.subscribe(pet => this.setState(pet));
+        this.subscription = this.props.didReceivePet.subscribe(pet => this.setState(pet));
     }
 
     componentWillUnmount() {

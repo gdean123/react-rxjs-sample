@@ -5,7 +5,6 @@ var APP_DIR = path.resolve(__dirname, 'src/app');
 
 var config = {
     entry: [
-        APP_DIR + '/sinks/network/index.js',
         APP_DIR + '/index.js'
     ],
     module: {

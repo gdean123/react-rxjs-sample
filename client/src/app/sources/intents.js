@@ -1,4 +1,4 @@
 import Rx from 'rxjs'
 
-export const nextStream = new Rx.Subject();
-export const previousStream = new Rx.Subject();
+export const createNextStream = () => new Rx.Subject();
+export const createPreviousStream = () => new Rx.Subject();

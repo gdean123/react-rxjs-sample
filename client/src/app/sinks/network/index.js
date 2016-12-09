@@ -1,1 +1,0 @@
-import fetchPetSink from './fetch_pet_sink'

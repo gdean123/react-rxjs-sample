@@ -1,8 +1,5 @@
 import React from 'react';
 
-import {selectedPetIndexStream} from '../../streams/selected_pet_index_stream'
-import {nextStream, previousStream} from '../../sources/intents'
-
 export default class PetSelector extends React.Component {
     constructor(props) {
         super(props);
@@ -10,7 +7,7 @@ export default class PetSelector extends React.Component {
     }
 
     componentDidMount() {
-        this.subscription = selectedPetIndexStream.subscribe(currentValue => this.setState({currentValue}));
+        this.subscription = this.props.selectedPetIndexStream.subscribe(currentValue => this.setState({currentValue}));
     }
 
     componentWillUnmount() {
@@ -20,8 +17,8 @@ export default class PetSelector extends React.Component {
     render() {
         return (
             <div>
-                <button onClick={() => nextStream.next()}>Next</button>
-                <button onClick={() => previousStream.next()}>Previous</button>
+                <button onClick={() => this.props.nextStream.next()}>Next</button>
+                <button onClick={() => this.props.previousStream.next()}>Previous</button>
                 <p>{this.state.currentValue}</p>
             </div>
         )

@@ -20,6 +20,7 @@ export class SelectedPet extends React.Component {
     render() {
         return (
             <div>
+                <h1>Selected Pet</h1>
                 <p>Name: {this.state.name}</p>
                 <p>Disposition: {this.state.disposition}</p>
             </div>

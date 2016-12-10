@@ -7,14 +7,14 @@ class Cli < Thor
   option :output_path
   def build
     output_path = options[:output_path] ? File.expand_path(options[:output_path]) : 'build'
-    System.execute "./node_modules/.bin/webpack -p --output-filename index.js --output-path #{output_path}"
+    System.execute "./node_modules/.bin/webpack --debug --output-filename index.js --output-path #{output_path}"
   end
 
   desc 'watch [--output_path <path>]', 'Continuously transcompile the source'
   option :output_path
   def watch
     output_path = options[:output_path] ? File.expand_path(options[:output_path]) : 'build'
-    System.execute "./node_modules/.bin/webpack -d --watch --output-filename index.js --output-path #{output_path}"
+    System.execute "./node_modules/.bin/webpack --debug --watch --output-filename index.js --output-path #{output_path}"
   end
 
   desc 'test', 'Run the jasmine tests'

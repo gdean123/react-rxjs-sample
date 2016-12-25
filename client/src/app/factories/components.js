@@ -6,7 +6,7 @@ import {ShowHideToggle} from '../sinks/components/show_hide_toggle'
 import {Application} from '../sinks/components/application';
 
 export const createComponents = (sources, streams) => {
-    const petSelector = React.createElement(PetSelector, {nextStream: sources.next, previousStream: sources.previous, selectedPetIndexStream: streams.selectedPetIndex});
+    const petSelector = React.createElement(PetSelector, {nextStream: sources.next, previousStream: sources.previous, stateStream: streams.petSelectorState});
     const selectedPet = React.createElement(SelectedPet, {didReceivePetStream: sources.didReceivePet});
     const showHideToggle = React.createElement(ShowHideToggle, {toggleVisibilityStream: sources.toggleVisibility, visibilityToggleLabelStream: streams.visibilityToggleLabel});
     const application = React.createElement(Application, {petSelector: petSelector, showHideToggle: showHideToggle, selectedPet: selectedPet, selectedPetVisibilityStream: streams.selectedPetVisibility});

@@ -1,13 +1,16 @@
 import React from 'react';
 
-export class PetSelector extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {currentValue: 1};
-    }
+const InternalPetSelector = ({nextStream, previousStream, selectedPetIndex}) => (
+    <div>
+        <button onClick={() => nextStream.next()}>Next</button>
+        <button onClick={() => previousStream.next()}>Previous</button>
+        <p>{selectedPetIndex}</p>
+    </div>
+);
 
+export class PetSelector extends React.Component {
     componentDidMount() {
-        this.subscription = this.props.selectedPetIndexStream.subscribe(currentValue => this.setState({currentValue}));
+        this.subscription = this.props.stateStream.subscribe(state => this.setState(state));
     }
 
     componentWillUnmount() {
@@ -16,11 +19,7 @@ export class PetSelector extends React.Component {
 
     render() {
         return (
-            <div>
-                <button onClick={() => this.props.nextStream.next()}>Next</button>
-                <button onClick={() => this.props.previousStream.next()}>Previous</button>
-                <p>{this.state.currentValue}</p>
-            </div>
+            <InternalPetSelector {...this.props} {...this.state} />
         )
     }
 }

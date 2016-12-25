@@ -17,6 +17,11 @@ class Cli < Thor
     System.execute "./node_modules/.bin/webpack --debug --watch --output-filename index.js --output-path #{output_path}"
   end
 
+  desc 'launch', 'Run development server with live reloading'
+  def launch
+    System.execute "./node_modules/.bin/webpack-dev-server --inline --hot"
+  end
+
   desc 'test', 'Run the jasmine tests'
   subcommand 'test', Test
 end

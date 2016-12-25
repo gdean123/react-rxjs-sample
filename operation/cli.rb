@@ -11,7 +11,8 @@ class Cli < Thor
 
   desc 'launch', 'Build the Javascript and then run the server'
   def launch
-    System.execute './client/operation/bin/client build --output-path ./server/src/main/resources/static'
-    System.execute './server/operation/bin/server launch'
+    spawn './client/operation/bin/client launch'
+    spawn './server/operation/bin/server launch'
+    Process.waitall
   end
 end

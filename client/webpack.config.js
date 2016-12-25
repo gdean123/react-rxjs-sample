@@ -15,7 +15,16 @@ var config = {
     },
     plugins: [new HtmlWebpackPlugin({
         template: APP_DIR + '/../index.html'
-    })]
+    })],
+    devServer: {
+        port: 3000,
+        proxy: {
+            '/': {
+                target: 'http://localhost:8080',
+                secure: false
+            }
+        }
+    }
 };
 
 module.exports = config;

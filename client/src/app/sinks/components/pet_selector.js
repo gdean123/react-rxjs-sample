@@ -1,6 +1,7 @@
 import React from 'react';
+import {connect} from '../../support/connect';
 
-const InternalPetSelector = ({nextStream, previousStream, selectedPetIndex}) => (
+const StatelessPetSelector = ({nextStream, previousStream, selectedPetIndex}) => (
     <div>
         <button onClick={() => nextStream.next()}>Next</button>
         <button onClick={() => previousStream.next()}>Previous</button>
@@ -8,18 +9,4 @@ const InternalPetSelector = ({nextStream, previousStream, selectedPetIndex}) => 
     </div>
 );
 
-export class PetSelector extends React.Component {
-    componentDidMount() {
-        this.subscription = this.props.stateStream.subscribe(state => this.setState(state));
-    }
-
-    componentWillUnmount() {
-        this.subscription.unsubscribe();
-    }
-
-    render() {
-        return (
-            <InternalPetSelector {...this.props} {...this.state} />
-        )
-    }
-}
+export const PetSelector = connect(StatelessPetSelector);

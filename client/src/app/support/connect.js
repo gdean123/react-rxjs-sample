@@ -1,9 +1,9 @@
 import React from 'react';
 
-export const connect = StatelessComponent => {
+export const connect = (StatelessComponent, stateStream) => {
     return class extends React.Component {
         componentDidMount() {
-            this.subscription = this.props.stateStream.subscribe(state => this.setState(state));
+            this.subscription = stateStream.subscribe(state => this.setState(state));
         }
 
         componentWillUnmount() {

@@ -4,7 +4,7 @@ import {createApplication} from '../../src/app/factories/application';
 import {renderShowHideToggle} from '../components/show_hide_toggle';
 import {renderApplication} from '../components/application';
 
-describe('clicking the toggle', () => {
+describe('showing and hiding the selected pet', () => {
     let application, showHideToggle, applicationComponent;
 
     beforeEach(() => {
@@ -14,23 +14,29 @@ describe('clicking the toggle', () => {
         applicationComponent = renderApplication(application.components.application);
     });
 
-    it('toggles the button name', () => {
-        expect(showHideToggle.buttonLabel()).toEqual('Hide');
+    it('shows the selected pet initially', () => {
+        expect(applicationComponent.selectedPetIsShown()).toBeTruthy();
+    });
 
-        showHideToggle.toggleVisibility();
-        expect(showHideToggle.buttonLabel()).toEqual('Show');
-
-        showHideToggle.toggleVisibility();
+    it('shows the hide button initially', () => {
         expect(showHideToggle.buttonLabel()).toEqual('Hide');
     });
 
-    it('toggles the visibility of the selected pet', () => {
-        expect(applicationComponent.selectedPetIsShown()).toBeTruthy();
+    describe('clicking the toggle', () => {
+        it('toggles the button name', () => {
+            showHideToggle.toggleVisibility();
+            expect(showHideToggle.buttonLabel()).toEqual('Show');
 
-        showHideToggle.toggleVisibility();
-        expect(applicationComponent.selectedPetIsShown()).toBeFalsy();
+            showHideToggle.toggleVisibility();
+            expect(showHideToggle.buttonLabel()).toEqual('Hide');
+        });
 
-        showHideToggle.toggleVisibility();
-        expect(applicationComponent.selectedPetIsShown()).toBeTruthy();
+        it('toggles the visibility of the selected pet', () => {
+            showHideToggle.toggleVisibility();
+            expect(applicationComponent.selectedPetIsShown()).toBeFalsy();
+
+            showHideToggle.toggleVisibility();
+            expect(applicationComponent.selectedPetIsShown()).toBeTruthy();
+        });
     });
 });

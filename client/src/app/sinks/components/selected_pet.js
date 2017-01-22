@@ -4,13 +4,15 @@ export class SelectedPet extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: '',
-            disposition: ''
+            pet: {
+                name: '',
+                disposition: ''
+            }
         }
     }
 
     componentDidMount() {
-        this.subscription = this.props.didReceivePetStream.subscribe(pet => this.setState(pet));
+        this.subscription = this.props.stateStream.subscribe(state => this.setState(state));
     }
 
     componentWillUnmount() {
@@ -21,8 +23,8 @@ export class SelectedPet extends React.Component {
         return (
             <div>
                 <h1>Selected Pet</h1>
-                <p>Name: {this.state.name}</p>
-                <p>Disposition: {this.state.disposition}</p>
+                <p>Name: {this.state.pet.name}</p>
+                <p>Disposition: {this.state.pet.disposition}</p>
             </div>
         )
     }

@@ -11,7 +11,7 @@ export const createComponents = (sources, streams) => {
     const StatefulApplication = connect(Application, "Application", streams.applicationState);
 
     const petSelector = React.createElement(StatefulPetSelector, {nextStream: sources.next, previousStream: sources.previous});
-    const selectedPet = React.createElement(SelectedPet, {didReceivePetStream: sources.didReceivePet});
+    const selectedPet = React.createElement(SelectedPet, {stateStream: streams.selectedPetState});
     const showHideToggle = React.createElement(ShowHideToggle, {toggleVisibilityStream: sources.toggleVisibility, visibilityToggleLabelStream: streams.visibilityToggleLabel});
     const application = React.createElement(StatefulApplication, {petSelector: petSelector, showHideToggle: showHideToggle, selectedPet: selectedPet});
 

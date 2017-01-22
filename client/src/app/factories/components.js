@@ -7,8 +7,8 @@ import {Application} from '../sinks/components/application';
 import {connect} from '../support/connect';
 
 export const createComponents = (sources, streams) => {
-    const StatefulPetSelector = connect(PetSelector, streams.petSelectorState);
-    const StatefulApplication = connect(Application, streams.applicationState);
+    const StatefulPetSelector = connect(PetSelector, "PetSelector", streams.petSelectorState);
+    const StatefulApplication = connect(Application, "Application", streams.applicationState);
 
     const petSelector = React.createElement(StatefulPetSelector, {nextStream: sources.next, previousStream: sources.previous});
     const selectedPet = React.createElement(SelectedPet, {didReceivePetStream: sources.didReceivePet});

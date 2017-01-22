@@ -18,7 +18,7 @@ gulp.task('test-browser', function() {
     var plugin = new jasminePlugin();
     return specPipe(plugin, true)
       .pipe(jasmineBrowser.specRunner())
-      .pipe(jasmineBrowser.server({whenReady: plugin.whenReady}));
+      .pipe(jasmineBrowser.server({sourcemappedStacktrace: true, whenReady: plugin.whenReady}));
 });
 
 gulp.task('test-headless', function() {

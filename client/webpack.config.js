@@ -16,6 +16,8 @@ var config = {
     plugins: [new HtmlWebpackPlugin({
         template: APP_DIR + '/../index.html'
     })],
+    debug: true,
+    devtool: 'inline-source-map',
     devServer: {
         port: 3000,
         proxy: {

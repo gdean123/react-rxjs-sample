@@ -1,11 +1,18 @@
 import React from 'react';
+import _ from 'lodash'
+import {combineLatestObject} from '../operators/combine_latest_object'
 
-export const connect = (StatelessComponent, componentName, stateStream) => {
+const createStatefulComponent = (StatelessComponent, requiresState, getInitialState, currentStateStream, actions) => {
     return class extends React.Component {
+        constructor(properties) {
+            super(properties);
+            this.state = getInitialState();
+            this.properties = properties
+        }
+
         componentDidMount() {
-            this.subscription = stateStream.subscribe(state => {
-                console.log("Component " + componentName + " receiving state: " + JSON.stringify(state));
-                this.setState(state)
+            this.subscription = currentStateStream.subscribe(valueMap => {
+                this.setState(valueMap)
             });
         }
 
@@ -14,10 +21,35 @@ export const connect = (StatelessComponent, componentName, stateStream) => {
         }
 
         render() {
-            console.log("Rendering component " + componentName + " with props " + JSON.stringify(this.props.keys) + " and state " + JSON.stringify(this.state))
-            return (
-                <StatelessComponent {...this.props} {...this.state} />
-            )
+            if (requiresState && this.state === null) {
+                return null
+            } else {
+                return (
+                    <StatelessComponent {...this.properties} {...this.state} {...actions}/>
+                );
+            }
         }
     };
+};
+
+const storeInitialState = (currentStateStream) => {
+    let initialState = null;
+    currentStateStream.subscribe(valueMap => initialState = valueMap);
+
+    return () => initialState;
+};
+
+const createActions = (actionMap) => (
+    _.mapValues(actionMap, (stream) => (
+        (value) => stream.next(value)
+    ))
+);
+
+export const connect = (StatelessComponent, stateMap, actionMap) => {
+    const currentStateStream = combineLatestObject(stateMap);
+    const getInitialState = storeInitialState(currentStateStream);
+    const actions = createActions(actionMap);
+    const requiresState = !_.isEmpty(stateMap);
+
+    return createStatefulComponent(StatelessComponent, requiresState, getInitialState, currentStateStream, actions)
 };

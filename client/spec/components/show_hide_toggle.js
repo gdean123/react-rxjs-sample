@@ -4,10 +4,10 @@ import {mount} from 'enzyme';
 export const renderShowHideToggle = (showHideToggle) => {
     const wrapper = mount(showHideToggle);
 
-    const toggleButton = wrapper.find('button');
+    const toggleButton = () => wrapper.find('button');
 
     return {
-        buttonLabel: () => toggleButton.text(),
-        toggleVisibility: () => toggleButton.simulate('click')
+        buttonLabel: () => toggleButton().text(),
+        toggleVisibility: () => toggleButton().simulate('click')
     }
 };

@@ -1,9 +1,9 @@
 import React from 'react';
 
-export const PetSelector = ({nextStream, previousStream, selectedPetIndex}) => (
+export const PetSelector = ({next, previous, selectedPetIndex}) => (
     <div>
-        <button onClick={() => nextStream.next()}>Next</button>
-        <button onClick={() => previousStream.next()}>Previous</button>
+        <button onClick={() => next()}>Next</button>
+        <button onClick={() => previous()}>Previous</button>
         <p>{selectedPetIndex}</p>
     </div>
 );

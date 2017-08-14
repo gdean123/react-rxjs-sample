@@ -22,7 +22,8 @@ var testConfiguration = {
         'react/addons': true,
         'react/lib/ExecutionEnvironment': true,
         'react/lib/ReactContext': true
-    }
+    },
+    devtool: "source-map"
 };
 
 module.exports = testConfiguration;

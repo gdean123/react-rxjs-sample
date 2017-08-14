@@ -17,13 +17,13 @@ function specPipe(plugin, watch) {
 gulp.task('test-browser', function() {
     var plugin = new jasminePlugin();
     return specPipe(plugin, true)
-      .pipe(jasmineBrowser.specRunner())
-      .pipe(jasmineBrowser.server({sourcemappedStacktrace: true, whenReady: plugin.whenReady}));
+      .pipe(jasmineBrowser.specRunner({sourcemappedStacktrace: true}))
+      .pipe(jasmineBrowser.server({whenReady: plugin.whenReady}));
 });
 
 gulp.task('test-headless', function() {
     var plugin = new jasminePlugin();
     return specPipe(plugin, false)
-      .pipe(jasmineBrowser.specRunner({console: true}))
+      .pipe(jasmineBrowser.specRunner({sourcemappedStacktrace: true, console: true}))
       .pipe(jasmineBrowser.headless());
 });

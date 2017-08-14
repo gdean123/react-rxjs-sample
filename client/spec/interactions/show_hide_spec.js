@@ -14,29 +14,39 @@ describe('showing and hiding the selected pet', () => {
         applicationComponent = renderApplication(application.components.application);
     });
 
-    it('shows the selected pet initially', () => {
-        expect(applicationComponent.selectedPetIsShown()).toBeTruthy();
+    it('hides the selected pet initially', () => {
+        expect(applicationComponent.selectedPetIsShown()).toBe(false);
     });
 
-    it('shows the hide button initially', () => {
+    it('shows the hide button', () => {
         expect(showHideToggle.buttonLabel()).toEqual('Hide');
     });
 
-    describe('clicking the toggle', () => {
-        it('toggles the button name', () => {
-            showHideToggle.toggleVisibility();
-            expect(showHideToggle.buttonLabel()).toEqual('Show');
-
-            showHideToggle.toggleVisibility();
-            expect(showHideToggle.buttonLabel()).toEqual('Hide');
+    describe('when the request for the selected pet completes', () => {
+        beforeEach(() => {
+            application.sources.didReceivePet.next({name: 'Pillowfight', disposition: 'Sleepy'});
         });
 
-        it('toggles the visibility of the selected pet', () => {
-            showHideToggle.toggleVisibility();
-            expect(applicationComponent.selectedPetIsShown()).toBeFalsy();
+        it('shows the selected pet', () => {
+            expect(applicationComponent.selectedPetIsShown()).toBe(true);
+        });
 
-            showHideToggle.toggleVisibility();
-            expect(applicationComponent.selectedPetIsShown()).toBeTruthy();
+        describe('clicking the toggle', () => {
+            it('toggles the button name', () => {
+                showHideToggle.toggleVisibility();
+                expect(showHideToggle.buttonLabel()).toEqual('Show');
+
+                showHideToggle.toggleVisibility();
+                expect(showHideToggle.buttonLabel()).toEqual('Hide');
+            });
+
+            it('toggles the visibility of the selected pet', () => {
+                showHideToggle.toggleVisibility();
+                expect(applicationComponent.selectedPetIsShown()).toBeFalsy();
+
+                showHideToggle.toggleVisibility();
+                expect(applicationComponent.selectedPetIsShown()).toBeTruthy();
+            });
         });
     });
 });

@@ -43,3 +43,7 @@ war {
         destinationDir = file(project.property('warOutputDirectory'))
     }
 }
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.0'
+}

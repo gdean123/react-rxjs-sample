@@ -1,6 +1,7 @@
 client/node_modules
 client/build
 server/.gradle
+server/server.iml
 server/build
 server/src/main/resources/
 build

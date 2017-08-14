@@ -22,9 +22,9 @@ describe('clicking next', () => {
     });
 
     it('fetches the pet with the associated id', () => {
+        spyOn(PetRepository, 'get').and.returnValue(Rx.Observable.never());
         application.sinks.fetchPet.start();
 
-        spyOn(PetRepository, 'get').and.returnValue(Rx.Observable.never());
         petSelector.next();
         expect(PetRepository.get).toHaveBeenCalledWith(2);
 

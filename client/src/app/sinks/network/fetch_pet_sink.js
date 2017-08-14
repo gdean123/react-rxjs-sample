@@ -1,15 +1,12 @@
 import {PetRepository} from '../../repositories/pet_repository';
+import {selectedPetIndexStream} from '../../streams/selected_pet_index_stream';
+import {didReceivePetStream} from "../../sources/network";
 
-export class FetchPetSink {
-    constructor({selectedPetIndexStream, didReceivePetStream}) {
-        this.selectedPetIndexStream = selectedPetIndexStream;
-        this.didReceivePetStream = didReceivePetStream;
-    }
-
+class FetchPetSink {
     start() {
-        this.subscription = this.selectedPetIndexStream.subscribe(selectedPetIndex => {
+        this.subscription = selectedPetIndexStream.subscribe(selectedPetIndex => {
             PetRepository.get(selectedPetIndex).subscribe(pet => {
-                this.didReceivePetStream.next(pet);
+                didReceivePetStream.next(pet);
             })
         })
     }
@@ -18,3 +15,5 @@ export class FetchPetSink {
         this.subscription.unsubscribe();
     }
 }
+
+export const fetchPetSink = new FetchPetSink();

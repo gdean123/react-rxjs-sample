@@ -1,14 +1,12 @@
 import React from 'react';
 
-import {createApplication} from '../../src/app/factories/application'
 import {renderPetSelector} from "../components/pet_selector";
 
 describe('clicking previous', () => {
-    let application, petSelector;
+    let petSelector;
 
     beforeEach(() => {
-        application = createApplication();
-        petSelector = renderPetSelector(application.components.petSelector);
+        petSelector = renderPetSelector();
     });
 
     it('subtracts one from the pet selector label', () => {

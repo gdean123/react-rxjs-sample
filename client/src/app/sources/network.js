@@ -1,3 +1,3 @@
 import Rx from 'rxjs'
 
-export const createDidReceivePetStream = () => new Rx.Subject();
+export const didReceivePetStream = new Rx.Subject();

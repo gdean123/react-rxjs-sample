@@ -1,10 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import {createApplication} from './factories/application'
+import Application from './sinks/components/application';
+import {fetchPetSink} from '../../src/app/sinks/network/fetch_pet_sink'
 
-const application = createApplication();
+ReactDOM.render(<Application/>, document.getElementById('app'));
 
-ReactDOM.render(application.components.application, document.getElementById('app'));
-
-application.sinks.fetchPet.start();
+fetchPetSink.start();

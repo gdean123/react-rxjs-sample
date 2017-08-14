@@ -1,8 +1,9 @@
 import React from 'react';
 import {mount} from 'enzyme';
+import PetSelector from "../../src/app/sinks/components/pet_selector";
 
-export const renderPetSelector = (petSelector) => {
-    const wrapper = mount(petSelector);
+export const renderPetSelector = () => {
+    const wrapper = mount(<PetSelector/>);
 
     function elementWithText(text) {
         return wrapper.findWhere(element => element.text() === text);

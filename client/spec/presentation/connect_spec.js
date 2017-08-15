@@ -2,7 +2,7 @@ import React from 'react';
 import Rx from 'rxjs'
 import {mount} from 'enzyme';
 
-import {connect} from '../../src/app/support/connect';
+import {connect} from '../../src/presentation/connect';
 
 describe('connect', () => {
     describe('receiving stream values', () => {

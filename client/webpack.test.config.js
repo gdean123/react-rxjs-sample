@@ -1,6 +1,6 @@
 var path = require('path');
 
-var APP_DIR = path.resolve(__dirname, 'src/app');
+var APP_DIR = path.resolve(__dirname, 'src');
 var SPEC_DIR = path.resolve(__dirname, 'spec');
 
 var testConfiguration = {

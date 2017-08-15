@@ -1,4 +1,4 @@
-import {computePetIndex} from '../../src/app/logic/compute_pet_index'
+import {computePetIndex} from '../../../src/domain/logic/compute_pet_index'
 
 describe('computePetIndex', () => {
     it('adds the current value to the existing index', () => {

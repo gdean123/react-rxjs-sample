@@ -1,7 +1,7 @@
 import React from 'react';
 import {mount} from 'enzyme';
-import SelectedPet from "../../src/app/sinks/components/selected_pet";
-import Application from '../../src/app/sinks/components/application';
+import SelectedPet from "../../src/presentation/selected_pet";
+import Application from '../../src/presentation/application';
 
 export const renderApplication = () => {
     const wrapper = mount(<Application/>);

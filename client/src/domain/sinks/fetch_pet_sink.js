@@ -1,6 +1,6 @@
-import {PetRepository} from '../../repositories/pet_repository';
-import {selectedPetIndexStream} from '../../streams/selected_pet_index_stream';
-import {didReceivePetStream} from "../../sources/network";
+import {PetRepository} from '../../persistence/pet_repository';
+import {selectedPetIndexStream} from '../streams/selected_pet_index_stream';
+import {didReceivePetStream} from "../sources/network";
 
 class FetchPetSink {
     start() {

@@ -1,9 +1,9 @@
 import React from 'react';
 
-import {renderShowHideToggle} from '../components/show_hide_toggle';
-import {renderApplication} from '../components/application';
+import {renderShowHideToggle} from '../page_objects/show_hide_toggle';
+import {renderApplication} from '../page_objects/application';
 
-describe('showing and hiding the selected pet', () => {
+describe('ShowHideToggle', () => {
     let showHideToggle, applicationComponent;
 
     beforeEach(() => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import _ from 'lodash'
-import {combineLatestObject} from '../operators/combine_latest_object'
+import {combineLatestObject} from '../domain/operators/combine_latest_object'
 
 const createStatefulComponent = (StatelessComponent, requiresState, getInitialState, currentStateStream, actions) => {
     return class extends React.Component {

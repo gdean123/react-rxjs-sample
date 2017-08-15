@@ -1,7 +1,7 @@
 import React from 'react';
-import {nextStream, previousStream} from "../../sources/intents";
-import {selectedPetIndexStream} from '../../streams/selected_pet_index_stream';
-import {connect} from '../../support/connect';
+import {nextStream, previousStream} from "../domain/sources/intents";
+import {selectedPetIndexStream} from '../domain/streams/selected_pet_index_stream';
+import {connect} from './connect';
 
 const PetSelector = ({next, previous, selectedPetIndex}) => (
     <div>

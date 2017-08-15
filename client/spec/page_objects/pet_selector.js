@@ -1,6 +1,6 @@
 import React from 'react';
 import {mount} from 'enzyme';
-import PetSelector from "../../src/app/sinks/components/pet_selector";
+import PetSelector from "../../src/presentation/pet_selector";
 
 export const renderPetSelector = () => {
     const wrapper = mount(<PetSelector/>);

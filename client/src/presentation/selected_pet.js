@@ -1,6 +1,6 @@
 import React from 'react';
-import {didReceivePetStream} from "../../sources/network";
-import {connect} from "../../support/connect";
+import {didReceivePetStream} from "../domain/sources/network";
+import {connect} from "./connect";
 
 const SelectedPet = ({pet}) => (
     <div>

@@ -1,8 +1,8 @@
 import React from 'react';
 import Rx from 'rxjs';
 
-import {PetRepository} from '../../src/app/repositories/pet_repository';
-import {fetchPetSink} from '../../src/app/sinks/network/fetch_pet_sink'
+import {PetRepository} from '../../src/persistence/pet_repository';
+import {fetchPetSink} from '../../src/domain/sinks/fetch_pet_sink'
 
 describe('initial state', () => {
     it('fetches the first pet', () => {

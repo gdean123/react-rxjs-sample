@@ -1,5 +1,5 @@
 import Rx from 'rxjs'
-import {combineLatestObject} from '../../src/app/operators/combine_latest_object'
+import {combineLatestObject} from '../../../src/domain/operators/combine_latest_object'
 
 describe('combineLatestObject', () => {
     let colorStream, cityStream, combinedObject;

@@ -3,10 +3,10 @@ import {nextStream, previousStream} from "../domain/sources/intents";
 import {selectedPetIndexStream} from '../domain/streams/selected_pet_index_stream';
 import {connect} from './connect';
 
-const PetSelector = ({next, previous, selectedPetIndex}) => (
+const PetSelector = ({didClickNext, didClickPrevious, selectedPetIndex}) => (
     <div>
-        <button onClick={() => next()}>Next</button>
-        <button onClick={() => previous()}>Previous</button>
+        <button onClick={didClickNext}>Next</button>
+        <button onClick={didClickPrevious}>Previous</button>
         <p>{selectedPetIndex}</p>
     </div>
 );
@@ -14,6 +14,6 @@ const PetSelector = ({next, previous, selectedPetIndex}) => (
 export default connect(PetSelector, {
     selectedPetIndex: selectedPetIndexStream
 }, {
-    next: nextStream,
-    previous: previousStream
+    didClickNext: nextStream,
+    didClickPrevious: previousStream
 });

@@ -45,11 +45,11 @@ const createActions = (actionMap) => (
     ))
 );
 
-export const connect = (StatelessComponent, stateMap, actionMap) => {
-    const currentStateStream = combineLatestObject(stateMap);
+export const connect = (StatelessComponent, mapStreamsToProps, mapActionsToProps) => {
+    const currentStateStream = combineLatestObject(mapStreamsToProps);
     const getInitialState = storeInitialState(currentStateStream);
-    const actions = createActions(actionMap);
-    const requiresState = !_.isEmpty(stateMap);
+    const actions = createActions(mapActionsToProps);
+    const requiresState = !_.isEmpty(mapStreamsToProps);
 
     return createStatefulComponent(StatelessComponent, requiresState, getInitialState, currentStateStream, actions)
 };
